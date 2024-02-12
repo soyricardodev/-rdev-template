@@ -3,13 +3,15 @@
   "module": "src/index.ts",
   "type": "module",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/git-clone": "0.2.3"
   },
   "peerDependencies": {
     "typescript": "5.0.0"
   },
   "dependencies": {
-    "@clack/prompts": "0.7.0"
+    "@clack/prompts": "0.7.0",
+    "git-clone": "0.2.0"
   },
   "scripts": {
     "lint": "bunx oxlint@latest ./src/index.ts"

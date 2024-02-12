@@ -1,5 +1,5 @@
-import { $ } from "bun"
 import { intro, outro, text, select, spinner } from "@clack/prompts"
+import gitclone from "git-clone/promise"
 import { rm } from "node:fs/promises"
 
 intro("Welcome to @rdev/cli! Let's create a new project.")
@@ -38,7 +38,9 @@ const s = spinner()
 
 s.start("Cloning project...")
 
-await $`git clone --depth 1 https://github.com/soyricardodev/${PROJECT_OPTIONS_SELECT}-template-base.git ${PROJECT_NAME}`.quiet()
+await gitclone(`https://github.com/soyricardodev/${PROJECT_OPTIONS_SELECT}-template-base.git`, PROJECT_NAME, {
+  shallow: true,
+})
 
 await rm(`${PROJECT_NAME}/.git`, { recursive: true, force: true })
 
